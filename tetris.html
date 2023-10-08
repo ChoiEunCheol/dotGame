@@ -27,7 +27,7 @@
         <div id="left">
             <table>
                 <tr>
-                    <td bgcolor="black"></td>
+                    <td >ㅇㅇ</td>
                     <td bgcolor="black"></td>
                     <td bgcolor="black"></td>
                     <td bgcolor="black"></td>
@@ -149,10 +149,17 @@
 
             </table>
         </div>
-        <div id="right"></div>
+        <div id="right">
+            <button type="text" id="test">ㅇㅇ</button>
+        </div>
     </div>
 </body>
 <script>
-
+    const td = document.getElementsByTagName('td');
+    const btn = document.getElementById('test')
+    
+    btn.addEventListener('click',function(){
+        td[0].innerText = 'ㅎㅇ';
+        })
 </script>
 </html>
