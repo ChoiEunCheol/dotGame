@@ -165,31 +165,47 @@
         td[0].className = "red";
         });
 
-    function moveDot(x){
-        for( let i = 0 ; i < 100 ; i++) {
-                if(td[i].className === "red"){
-                    td[i].className = "black";
-                    td[i+x].className = "red";
-                    break;
-                }
-            }
-    } 
     document.addEventListener('keydown',function(e){
         console.log(e.key);
         if(e.key === "ArrowRight"){
-            if(td[0].className === "red"){
-                break;
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    if(i % 10 !== 9){
+                        td[i].className = "black";
+                        td[i+1].className = "red";
+                        break;
+                    }
+                }
             }
-            moveDot(1);
         }
         if(e.key === "ArrowLeft"){
-            moveDot(-1);
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    if(i % 10 !== 0){
+                        td[i].className = "black";
+                        td[i-1].className = "red";
+                        break;
+                    }
+                }
+            }
         }
         if(e.key === "ArrowUp"){
-            moveDot(-10);
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i-10].className = "red";
+                    break;
+                }
+            }
         }
         if(e.key === "ArrowDown"){
-            moveDot(10);
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i+10].className = "red";
+                    break;
+                }
+            }
         }
     })
 </script>
