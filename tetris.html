@@ -21,8 +21,8 @@
     .red{
         background-color: red;
     }
-    .blue{
-        background-color: blue;
+    .black{
+        background-color: black;
     }
 </style>
 <body>
@@ -30,8 +30,8 @@
         <div id="left">
             <table>
                 <tr>
-                    <td class="red">ㅇㅇ</td>
-                    <td class="blue"></td>
+                    <td class="red"></td>
+                    <td bgcolor="black"></td>
                     <td bgcolor="black"></td>
                     <td bgcolor="black"></td>
                     <td bgcolor="black"></td>
@@ -162,10 +162,46 @@
     const btn = document.getElementById('test')
     
     btn.addEventListener('click',function(){
-        td[0].className = "blue";
+        td[0].className = "red";
         })
     document.addEventListener('keydown',function(e){
         console.log(e.key);
+        if(e.key === "ArrowRight"){
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i+1].className = "red";
+                    break;
+                }
+            }
+        }
+        if(e.key === "ArrowLeft"){
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i-1].className = "red";
+                    break;
+                }
+            }
+        }
+        if(e.key === "ArrowUp"){
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i-10].className = "red";
+                    break;
+                }
+            }
+        }
+        if(e.key === "ArrowDown"){
+            for( let i = 0 ; i < 100 ; i++) {
+                if(td[i].className === "red"){
+                    td[i].className = "black";
+                    td[i+10].className = "red";
+                    break;
+                }
+            }
+        }
     })
 </script>
 </html>
