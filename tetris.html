@@ -10,8 +10,8 @@
         display: flex;
     }
     table{
-        width: 500px;
-        height: 500px;
+        width: 400px;
+        height: 800px;
         border: 1px solid violet; 
         /* border-collapse: collapse; */
     }
@@ -41,13 +41,16 @@
     const table = document.getElementsByTagName('table')[0];
     const tr = document.getElementsByTagName('tr');
 
-    for ( let i = 0 ; i < 10 ; i++){
+    const tetrisWidth = 10;
+    const tetrisHeight = 20;
+
+    for ( let i = 0 ; i < tetrisHeight ; i++){
         const trMaker = document.createElement('tr');
         table.append(trMaker);
-        for (let j = 0 ; j < 10 ; j++){
+        for (let j = 0 ; j < tetrisWidth ; j++){
             const tdMaker = document.createElement('td');
             tr[i].append(tdMaker);
-            td[10*i+j].className = "black"
+            td[tetrisWidth*i+j].className = "black"
         }
     }
     
@@ -56,47 +59,42 @@
         td[0].className = "red";
         });
 
-    document.addEventListener('keydown',function(e){
-        console.log(e.key);
-        if(e.key === "ArrowRight"){
-            for( let i = 0 ; i < 100 ; i++) {
+        function moveRow(x,y){
+            for( let i = 0 ; i < tetrisHeight*tetrisWidth ; i++) {
                 if(td[i].className === "red"){
-                    if(i % 10 !== 9){
+                    if(i % tetrisWidth !== x){
                         td[i].className = "black";
-                        td[i+1].className = "red";
+                        td[i+y].className = "red";
                         break;
                     }
                 }
             }
+        }
+
+        function moveCol(x,y){
+            for( let i = 0 ; i < tetrisHeight*tetrisWidth ; i++) {
+                if(td[i].className === "red"){
+                    if(Math.floor(i/tetrisWidth) !== x){
+                        td[i].className = "black";
+                        td[i-y].className = "red";
+                        break;
+                    }
+                }
+            }
+        }
+
+    document.addEventListener('keydown',function(e){
+        if(e.key === "ArrowRight"){
+            moveRow(tetrisWidth-1,1);
         }
         if(e.key === "ArrowLeft"){
-            for( let i = 0 ; i < 100 ; i++) {
-                if(td[i].className === "red"){
-                    if(i % 10 !== 0){
-                        td[i].className = "black";
-                        td[i-1].className = "red";
-                        break;
-                    }
-                }
-            }
+            moveRow(0,-1);
         }
         if(e.key === "ArrowUp"){
-            for( let i = 0 ; i < 100 ; i++) {
-                if(td[i].className === "red"){
-                    td[i].className = "black";
-                    td[i-10].className = "red";
-                    break;
-                }
-            }
+            moveCol(0,tetrisWidth);
         }
         if(e.key === "ArrowDown"){
-            for( let i = 0 ; i < 100 ; i++) {
-                if(td[i].className === "red"){
-                    td[i].className = "black";
-                    td[i+10].className = "red";
-                    break;
-                }
-            }
+            moveCol(tetrisHeight-1,-tetrisWidth);
         }
     })
 </script>
