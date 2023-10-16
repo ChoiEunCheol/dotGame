@@ -66,6 +66,15 @@
         });
 
     // 밑에서 부터 움직여야 될 것 같음
+    function moveRight(){
+            for( let i = tetrisHeight*tetrisWidth ; i <0  ; i--) {
+                if(td[i].className === "red"){
+                        td[i].className = "black";
+                        td[i+y].className = "red";
+                    }
+                }
+            }
+
         function moveRow(x,y){
             for( let i = 0 ; i < tetrisHeight*tetrisWidth ; i++) {
                 if(td[i].className === "red"){
@@ -92,7 +101,7 @@
 
     document.addEventListener('keydown',function(e){
         if(e.key === "ArrowRight"){
-            moveRow(tetrisWidth-1,1);
+            moveRight();
         }
         if(e.key === "ArrowLeft"){
             moveRow(0,-1);
