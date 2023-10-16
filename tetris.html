@@ -67,13 +67,8 @@
 
     // 밑에서 부터 움직여야 될 것 같음
     function moveRight(){
-            for( let i = tetrisHeight*tetrisWidth ; i <0  ; i--) {
-                if(td[i].className === "red"){
-                        td[i].className = "black";
-                        td[i+y].className = "red";
-                    }
-                }
-            }
+        stairs(2)
+    }
 
         function moveRow(x,y){
             for( let i = 0 ; i < tetrisHeight*tetrisWidth ; i++) {
