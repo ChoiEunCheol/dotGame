@@ -54,9 +54,15 @@
         }
     }
     
+    function stairs(x){
+        td[x].className = "red";
+        td[x+1].className = "red";
+        td[x+10].className = "red";
+        td[x+9].className = "red";
+    }
     
     btn.addEventListener('click',function(){
-        td[0].className = "red";
+        stairs(1);
         });
 
         function moveRow(x,y){
